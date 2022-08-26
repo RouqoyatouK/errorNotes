@@ -17,6 +17,8 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
+    //Definition de tout nos attribut
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUser;
