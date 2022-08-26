@@ -19,5 +19,7 @@ public class Etat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEtat;
-private String libelle ;
+    private String libelle;
+
+
 }

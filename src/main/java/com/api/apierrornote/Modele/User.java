@@ -30,7 +30,7 @@ public class User {
     @Column(length = 50, nullable = false)
     private String password;
 
-    //Faire en sorte que quand on creer le user il est authaumatiquement le rôle  User
+    //quand on creer le user il est authaumatiquement le rôle  User
     private String role = new String("User");
 
 }

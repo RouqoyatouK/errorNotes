@@ -1,6 +1,7 @@
 package com.api.apierrornote.Service;
 
 import com.api.apierrornote.Modele.Etat;
+import com.api.apierrornote.Modele.User;
 import com.api.apierrornote.Repository.EtatRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,4 +16,13 @@ public class EtatServiceImpl implements EtatService {
     public Etat creer(Etat etat) {
         return etatrepo.save(etat);
     }
+
+    @Override
+    public Etat TrouverParLibelle(String libelle) {
+        return etatrepo.findByLibelle(libelle);
+    }
+
+
 }
+
+
