@@ -30,23 +30,20 @@ public class ProblemeController {
       //  Etat etat = etatservice.TrouverParLibelle(libelle);
 
 
-        if (userservice.TrouverParEmail(user.getEmail()) == null){
-
-
-            return "Email N'EXISTE pas ou password erroné";
-
-        }
-        else{
+        if (user.equals(userservice.TrouverParEmail(user.getEmail())) && user1.equals(userservice.TrouverParPassword(user1.getPassword())) ){
 
             // A la table probleme on affecte la valeur recuperer dans user1 et user
-             probleme.setUser(user);
-             probleme.setUser(user1);
+            probleme.setUser(user);
+            probleme.setUser(user1);
             // probleme.setEtat(etat);
 
-            //
-             this.problemeservice.creer(probleme);
+            this.problemeservice.creer(probleme);
 
-             return "Les donnes bien enregistre";
+            return "Les donnes bien enregistre";
+        }
+        else{
+            return "Email N'EXISTE pas ou password erroné";
+
         }
 
 
