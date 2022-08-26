@@ -22,9 +22,11 @@ private  String titre;
 private  String description;
 private String technologie;
 
+//methode pour migrer la cle primaire de l'etat comme cle secondaire dans probleme
 @ManyToOne
     private Etat etat;
 
+//methode pour migrer la cle primaire de user comme cle secondaire dans probleme
 @ManyToOne
     private User user;
 }

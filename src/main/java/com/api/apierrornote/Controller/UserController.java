@@ -16,9 +16,11 @@ public class UserController {
     @Autowired
     UserService userservice;
 
+
+
     //methode qui prend l'url pour creer un user
     @PostMapping("/create")
-    public User User (@RequestBody User user){ //prend un user en format Json et @RequestBody veut dire que la valeur doit être au niveau du corps
+    public User create (@RequestBody User user){ //prend un user en format Json et @RequestBody veut dire que la valeur doit être au niveau du corps
          return userservice.creer(user);
     }
 

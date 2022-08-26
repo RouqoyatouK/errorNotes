@@ -1,4 +1,18 @@
 package com.api.apierrornote.Service;
 
-public class EtatServiceImpl {
+import com.api.apierrornote.Modele.Etat;
+import com.api.apierrornote.Repository.EtatRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EtatServiceImpl implements EtatService {
+
+    @Autowired
+    EtatRepo etatrepo;
+
+    @Override
+    public Etat creer(Etat etat) {
+        return etatrepo.save(etat);
+    }
 }

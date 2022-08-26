@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -22,9 +19,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUser;
+    @Column(length = 50, nullable = false)
     private String nom;
+    @Column(length = 50, nullable = false)
     private String prenom;
+
+    @Column(length = 50, unique = true)
     private String email;
-    private String role;
+
+    @Column(length = 50, nullable = false)
+    private String password;
+
+    //Faire en sorte que quand on creer le user il est authaumatiquement le rôle  User
+    private String role = new String("User");
 
 }
