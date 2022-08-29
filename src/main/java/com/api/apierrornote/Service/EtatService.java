@@ -7,7 +7,7 @@ public interface EtatService {
     //creer un etat
     Etat creer (Etat etat);
 
-    //jai modif
+    //methode permettant de trouver l'etat avec le libelle
     Etat TrouverParLibelle(String libelle);
 
 

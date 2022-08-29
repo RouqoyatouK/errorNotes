@@ -12,7 +12,7 @@ public interface UserService {
     //methode permetant de retrouver un utilisateur par email et password ils
     // seront utiliser dans le UserServiceImpl avec comme retour la reqête defini dans le repot
     User TrouverParEmail(String email);
-    User TrouverParPassword(String password);
+    //User TrouverParPassword(String password);
 
     //User TrouverParEmailEtMdp(String email, String password);
 }
