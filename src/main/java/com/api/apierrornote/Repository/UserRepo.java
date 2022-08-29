@@ -15,8 +15,8 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
    @Modifying
    @Transactional
-    @Query(value = "INSERT INTO probleme(user_id_user, id_etat) values(?,?) ", nativeQuery = true)
-    public Long InsertId(Long user_id_user, Long id_etat);
+    @Query(value = "INSERT INTO probleme(user) values(?) ", nativeQuery = true)
+    public Long InsertId(Long user);
 
 
 
@@ -24,6 +24,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
     // comme retout dans UserserviceImpl
 
     //jai modif
+    //User findByEmailAndPassword(String email,String password); on pouvait aussi l'utiliser
     User findByPassword(String password);
     User findByEmail(String email);
 

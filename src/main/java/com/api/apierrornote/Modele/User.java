@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -29,6 +30,7 @@ public class User {
 
     @Column(length = 50, nullable = false)
     private String password;
+    private Date date = new Date();
 
     //quand on creer le user il est authaumatiquement le rôle  User
     private String role = new String("User");

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -21,14 +22,15 @@ public class Probleme {
     private String titre;
     private String description;
     private String technologie;
+    private Date date = new Date();
 
     //methode pour migrer la cle primaire de l'etat comme cle secondaire dans probleme
     @ManyToOne
-    @JoinColumn(name = "idEtat")
+    @JoinColumn(name = "etat")
     private Etat etat;
 
     //methode pour migrer la cle primaire de user comme cle secondaire dans probleme
     @ManyToOne
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "user")
     private User user;
 }

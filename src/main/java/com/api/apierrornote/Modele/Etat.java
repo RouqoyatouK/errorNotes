@@ -17,6 +17,7 @@ public class Etat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEtat;
+   // @Column(length = 50, unique = true)
     private String libelle;
 
 

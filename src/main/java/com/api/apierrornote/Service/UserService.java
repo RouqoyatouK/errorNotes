@@ -14,4 +14,5 @@ public interface UserService {
     User TrouverParEmail(String email);
     User TrouverParPassword(String password);
 
+    //User TrouverParEmailEtMdp(String email, String password);
 }

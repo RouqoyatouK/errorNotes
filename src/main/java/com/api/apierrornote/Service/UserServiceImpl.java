@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
         return userrepo.findByPassword(password);
     }
 
+    /*@Override
+    public User TrouverParEmailEtMdp(String email, String password) {
+        return userrepo.findByEmailAndPassword(email, password);
+    }*/
+
 
     // methode d'implementation de UserService pour trouver l'utilisateur par le password
 
