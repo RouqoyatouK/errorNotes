@@ -1,4 +1,42 @@
 package com.api.apierrornote.Controller;
 
+import com.api.apierrornote.Modele.Commentaire;
+import com.api.apierrornote.Modele.Probleme;
+import com.api.apierrornote.Modele.User;
+import com.api.apierrornote.Service.CommentaireService;
+import com.api.apierrornote.Service.ProblemeService;
+import com.api.apierrornote.Service.UserService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@AllArgsConstructor
+@RequestMapping("/commentaire")
 public class CommentaireCotroller {
+
+
+    @Autowired
+    CommentaireService commentaireservice;
+    UserService userservice;
+
+
+
+
+    @PostMapping("/create/{email}/{password}")
+    public String create(@RequestBody Commentaire commentaire, @PathVariable String email, @PathVariable String password) {
+
+        User user = userservice.TrouverParEmail(email);
+
+        if (user == null) return "email incorrect!";
+        else if (!user.getPassword().equals(password)) return "Mot de passe incorrect!";
+        else {
+            commentaire.setUser(user);
+
+
+            this.commentaireservice.creer(commentaire);
+
+            return "Les donnes bien enregistre";
+        }
+    }
 }
