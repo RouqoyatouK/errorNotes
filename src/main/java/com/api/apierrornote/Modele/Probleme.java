@@ -24,11 +24,11 @@ public class Probleme {
 
     //methode pour migrer la cle primaire de l'etat comme cle secondaire dans probleme
     @ManyToOne
-    @JoinColumn(name = "idEtat")
+    @JoinColumn(name = "etat")
     private Etat etat;
 
     //methode pour migrer la cle primaire de user comme cle secondaire dans probleme
     @ManyToOne
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "user")
     private User user;
 }
