@@ -21,32 +21,33 @@ public class ProblemeController {
     UserService userservice;
     EtatService etatservice;
 
-    @PostMapping("/create/{email}/{password}")
-    public String create(@RequestBody Probleme probleme, @PathVariable String email, @PathVariable String password){
+    @PostMapping("/create/{email}/{password}/{libelle}")
+    public String create(@RequestBody Probleme probleme, @PathVariable String libelle, @PathVariable String email, @PathVariable String password){
 
         //instanciation de User en user et user1 pour recuperer l'email et le mot de pass
         User user = userservice.TrouverParEmail(email);
         User user1 = userservice.TrouverParPassword(password);
-      //  Etat etat = etatservice.TrouverParLibelle(libelle);
+        Etat etat = etatservice.TrouverParLibelle(libelle);
+
+        if (user == null) return "Email incorrect!";
+        else if (user1 == null) return "Mot de passe incorrect!";
+        else {
 
 
-        if (user.equals(userservice.TrouverParEmail(user.getEmail())) && user1.equals(userservice.TrouverParPassword(user1.getPassword())) ){
+                // A la table probleme on affecte la valeur recuperer dans user1 et user
+                probleme.setUser(user);
+                probleme.setUser(user1);
+                probleme.setEtat(etat);
 
-            // A la table probleme on affecte la valeur recuperer dans user1 et user
-            probleme.setUser(user);
-            probleme.setUser(user1);
-            // probleme.setEtat(etat);
+                this.problemeservice.creer(probleme);
 
-            this.problemeservice.creer(probleme);
+                return "Les donnes bien enregistre";
+            }
 
-            return "Les donnes bien enregistre";
         }
-        else{
-            return "Email N'EXISTE pas ou password erroné";
 
-        }
 
 
 
     }
-}
+

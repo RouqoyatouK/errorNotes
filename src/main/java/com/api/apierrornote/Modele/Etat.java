@@ -19,7 +19,5 @@ public class Etat {
     private Long idEtat;
     private String libelle;
 
-    @OneToMany(mappedBy = "etat")
-    private List<Probleme> probleme;
 
 }
