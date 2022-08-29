@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,7 +22,9 @@ public class Solution {
     private String tempsConsacre;
     private String ressources;
     private String recherche;
+    private Date date = new Date();
 
     @OneToOne
+    @JoinColumn (name = "probleme")
     private Probleme probleme;
 }

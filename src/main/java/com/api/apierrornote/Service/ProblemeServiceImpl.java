@@ -16,4 +16,9 @@ public class ProblemeServiceImpl implements ProblemeService {
     public Probleme creer(Probleme probleme) {
         return problemerepo.save(probleme);
     }
+
+    @Override
+    public Probleme TrouverParTitre(String titre) {
+        return problemerepo.findByTitre(titre);
+    }
 }

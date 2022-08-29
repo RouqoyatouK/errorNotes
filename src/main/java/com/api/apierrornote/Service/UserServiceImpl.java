@@ -29,11 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     //j'ai fait
-    @Override
+  /*  @Override
     public User TrouverParPassword(String password) {
 
         return userrepo.findByPassword(password);
-    }
+    }*/
 
     /*@Override
     public User TrouverParEmailEtMdp(String email, String password) {

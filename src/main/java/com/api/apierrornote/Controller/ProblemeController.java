@@ -20,7 +20,10 @@ public class ProblemeController {
     @Autowired
     ProblemeService problemeservice;
 
+    @Autowired
     UserService userservice;
+
+    @Autowired
     EtatService etatservice;
 
     @PostMapping("/create/{email}/{password}/{libelle}")
