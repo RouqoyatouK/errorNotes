@@ -19,12 +19,12 @@ public class Commentaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-private Date date;
-private String message;
+    private Date date = new Date();
+    private String message;
 
-@ManyToOne
+    @ManyToOne
     private User user;
 
-@ManyToOne
+    @ManyToOne
     private Solution solution;
 }

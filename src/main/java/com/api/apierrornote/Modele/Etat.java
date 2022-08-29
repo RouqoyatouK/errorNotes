@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class Etat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
