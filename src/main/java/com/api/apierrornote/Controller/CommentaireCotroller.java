@@ -26,14 +26,12 @@ public class CommentaireCotroller {
     @PostMapping("/create/{email}/{password}")
     public String create(@RequestBody Commentaire commentaire, @PathVariable String email, @PathVariable String password) {
 
-        User user = userservice.TrouverParEmail(email);
+        User us = userservice.TrouverParEmail(email);
 
-        if (user == null) return "email incorrect!";
-        else if (!user.getPassword().equals(password)) return "Mot de passe incorrect!";
+        if (us == null) return "email incorrect!";
+        else if (!us.getPassword().equals(password)) return "Mot de passe incorrect!";
         else {
-            commentaire.setUser(user);
-
-
+            commentaire.setUser(us);
             this.commentaireservice.creer(commentaire);
 
             return "Les donnes bien enregistre";
