@@ -20,6 +20,9 @@ public class UserServiceImpl implements UserService {
         return userrepo.save(user);
     }
 
+
+
+
     // methode d'implementation de UserService pour trouver l'utilisateur par l'email
 
     @Override
@@ -28,7 +31,8 @@ public class UserServiceImpl implements UserService {
         return userrepo.findByEmail(email);
     }
 
-    //j'ai fait
+
+
   /*  @Override
     public User TrouverParPassword(String password) {
 
@@ -41,7 +45,7 @@ public class UserServiceImpl implements UserService {
     }*/
 
 
-    // methode d'implementation de UserService pour trouver l'utilisateur par le password
+
 
 
 }
