@@ -2,6 +2,7 @@ package com.api.apierrornote.Controller;
 
 import com.api.apierrornote.Modele.Etat;
 import com.api.apierrornote.Modele.Probleme;
+import com.api.apierrornote.Modele.Solution;
 import com.api.apierrornote.Modele.User;
 import com.api.apierrornote.Service.EtatService;
 import com.api.apierrornote.Service.ProblemeService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -58,6 +60,11 @@ public class ProblemeController {
 
         }
 
+            //la gestion de notre fonctionnalite de recherche
+        @GetMapping("/recherche/{motcle}")
+        public List<Probleme> rechercherMotCle(@PathVariable(value = "motcle") String motcle) {
+            return problemeservice.RechercherDescription(motcle);
+        }
 
 
 
