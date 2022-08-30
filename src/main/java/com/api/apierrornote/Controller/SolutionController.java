@@ -44,6 +44,10 @@ public class SolutionController {
 
         }
     }
+    @GetMapping("/liste")
+    public Iterable<Object[]> listeSolution() {
+        return solutionservice.listeSolution();
+    }
 
 }
 
