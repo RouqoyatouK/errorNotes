@@ -9,6 +9,8 @@ import com.api.apierrornote.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/solution")
 public class SolutionController {
@@ -31,12 +33,10 @@ public class SolutionController {
             return "le mail n'existe pas";
         } else if (!a.getPassword().equals(password)) {
             return "Password incorrect";
-        } else if(b== null) {
+        } else if (b == null) {
 
-                return "le probleme ddesigne n'existe pas!";
-            }
-
-        else {
+            return "le probleme ddesigne n'existe pas!";
+        } else {
 
             solution.setProbleme(b);
             this.solutionservice.creer(solution);
@@ -44,6 +44,7 @@ public class SolutionController {
 
         }
     }
+
 }
 
 

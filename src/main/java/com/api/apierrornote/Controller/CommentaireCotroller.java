@@ -26,8 +26,10 @@ public class CommentaireCotroller {
     @PostMapping("/create/{email}/{password}")
     public String create(@RequestBody Commentaire commentaire, @PathVariable String email, @PathVariable String password) {
 
+        //Authentification de l'utilisateur
         User us = userservice.TrouverParEmail(email);
 
+        //verification de l'email et du mot de passe saisie à l'url
         if (us == null) return "email incorrect!";
         else if (!us.getPassword().equals(password)) return "Mot de passe incorrect!";
         else {

@@ -2,9 +2,12 @@ package com.api.apierrornote.Repository;
 
 
 import com.api.apierrornote.Modele.Probleme;
+import com.api.apierrornote.Modele.Solution;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ProblemeRepo extends JpaRepository<Probleme, Long> {
@@ -16,4 +19,8 @@ public interface ProblemeRepo extends JpaRepository<Probleme, Long> {
 
     // Trouver le problème par le titre
     Probleme findByTitre(String titre);
+
+    //Requete permettant de faire la recherche par mot cle
+    @Query(value = "select * from probleme where probleme.description like %?%", nativeQuery = true)
+    List<Probleme> RechercherDescription(String motcle);
 }

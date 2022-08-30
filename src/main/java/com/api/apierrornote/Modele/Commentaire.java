@@ -22,9 +22,12 @@ public class Commentaire {
     private Date date = new Date();
     private String message;
 
+    //gestion de migration des cles
     @ManyToOne
+    @JoinColumn(name = "user")
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "solution")
     private Solution solution;
 }

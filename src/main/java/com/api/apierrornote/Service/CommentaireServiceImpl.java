@@ -10,7 +10,8 @@ public class CommentaireServiceImpl implements CommentaireService {
     
     @Autowired
     CommentaireRepo commentairerepo;
-    
+
+    //implementation de notre methode de creation de commentaire
     @Override
     public Commentaire creer(Commentaire commentaire) {
         return commentairerepo.save(commentaire);
