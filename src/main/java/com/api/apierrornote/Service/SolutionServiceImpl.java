@@ -22,5 +22,11 @@ public class SolutionServiceImpl implements SolutionService {
         return solutionrepo.save(solution);
     }
 
+    //implementation de la methode pour afficher la liste des solutions
+    @Override
+    public Iterable<Object[]> listeSolution() {
+        return solutionrepo.listeSolution();
+    }
+
 
 }

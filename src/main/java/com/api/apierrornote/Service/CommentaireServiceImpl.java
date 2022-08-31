@@ -16,4 +16,10 @@ public class CommentaireServiceImpl implements CommentaireService {
     public Commentaire creer(Commentaire commentaire) {
         return commentairerepo.save(commentaire);
     }
+
+    //implementation de notre methode d'affichagede commentaire
+    @Override
+    public Iterable<Object[]> listeCommentaire() {
+        return commentairerepo.listeCommentaire();
+    }
 }

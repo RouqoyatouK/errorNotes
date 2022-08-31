@@ -66,6 +66,11 @@ public class ProblemeController {
             return problemeservice.RechercherDescription(motcle);
         }
 
+        //Affichage des problemes
+         @GetMapping("/liste")
+         public Iterable<Object[]> listeProbleme(){
+            return problemeservice.listeProbleme();
+         }
 
 
     }

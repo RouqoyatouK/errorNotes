@@ -31,6 +31,11 @@ public class ProblemeServiceImpl implements ProblemeService {
         return problemerepo.RechercherDescription(motcle);
     }
 
+    //implementation de la methode permettant d'afficher la liste des problemes'
+    @Override
+    public Iterable<Object[]> listeProbleme() {
+        return problemerepo.listeProbleme();
+    }
 
 
 }

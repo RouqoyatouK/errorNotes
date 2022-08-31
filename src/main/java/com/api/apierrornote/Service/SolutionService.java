@@ -9,7 +9,8 @@ public interface SolutionService {
 
     Solution creer(Solution solution);
 
-    //public Object rechercherParMotCle(String motcle);
+    //methode pour afficher la liste des solutions
+    Iterable<Object[]> listeSolution();
 
 
 }

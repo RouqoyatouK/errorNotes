@@ -10,8 +10,13 @@ public interface ProblemeService {
     //creer un bloblème
     Probleme creer(Probleme probleme);
 
+
     Probleme TrouverParTitre(String titre);
 
+    //methode de recherche de probleme par mot cle
     List<Probleme> RechercherDescription(String motcle);
+
+    //methode pour afficher la liste des problemes
+    Iterable<Object[]> listeProbleme();
 
 }

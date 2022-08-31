@@ -41,4 +41,8 @@ public class CommentaireCotroller {
             return "Les donnes bien enregistre";
         }
     }
+    @GetMapping("/liste")
+    public Iterable<Object[]> listeCommentaire() {
+        return commentaireservice.listeCommentaire();
+    }
 }
