@@ -19,7 +19,6 @@ public interface UserRepo extends JpaRepository<User, Long> {
     public Long InsertId(Long user);
 
 
-
     //requête permetant de retrouver un utilisateur par email et password ils seront utiliser
     // comme retout dans UserserviceImpl
 

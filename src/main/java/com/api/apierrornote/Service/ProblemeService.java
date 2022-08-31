@@ -16,6 +16,9 @@ public interface ProblemeService {
     //methode de recherche de probleme par mot cle
     List<Probleme> RechercherDescription(String motcle);
 
+    //methode pour modifier un probleme
+
+
     //methode pour afficher la liste des problemes
     Iterable<Object[]> listeProbleme();
 
