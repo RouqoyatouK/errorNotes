@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
     //implementation de la methode qui permet de d'enregistrer un utilisateur
     @Override
     public User creer(User user) {
-
         return userrepo.save(user);
     }
 

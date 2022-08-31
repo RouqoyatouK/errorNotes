@@ -1,15 +1,13 @@
 package com.api.apierrornote.Modele;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 
 @Entity
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -27,7 +25,16 @@ public class Commentaire {
     @JoinColumn(name = "user")
     private User user;
 
+
+    public Solution getSolution() {
+        return solution;
+    }
+
+    public void setSolution(Solution solution) {
+        this.solution = solution;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "solution")
     private Solution solution;
+
 }

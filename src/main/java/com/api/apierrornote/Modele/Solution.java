@@ -31,6 +31,7 @@ public class Solution {
     private Probleme probleme;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "solution")
     private List<Commentaire> commentaire;
 
