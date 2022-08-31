@@ -52,7 +52,7 @@ public class SolutionController {
             return "Password incorrect";
         } else if (problemeRepo.findByIdProbleme(idProbleme) == null) {//verifie que le probleme existe
 
-            return "le probleme ddesigne n'existe pas!";
+            return "le probleme designe n'existe pas!";
         }
 
         //verifie que l'email dans l'url est le meme que celui qui a creer le probleme
