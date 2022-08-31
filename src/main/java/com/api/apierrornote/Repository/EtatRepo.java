@@ -14,6 +14,7 @@ public interface EtatRepo extends JpaRepository<Etat, Long> {
 
     //jai modif
     Etat findByLibelle(String libelle);
+    Etat findByIdEtat(Long idEtat);
 
 
 }

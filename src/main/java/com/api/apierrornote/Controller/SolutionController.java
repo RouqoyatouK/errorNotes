@@ -39,11 +39,11 @@ public class SolutionController {
        // Probleme b = problemeservice.TrouverParTitre(titre);
           // recupere le probleme a travers son id pour connaitre l'id de lutilisateur
         Probleme blm = problemeRepo.findByIdProbleme(idProbleme);
+        //Etat et = etatRepo.findByIdEtat(idProbleme);
+
+        String ett = "Fermer";
 
 
-
-    /* Strin ett = "Fermer";
-     et.geEtat == ett return "Letat est fermer";*/
 
 
         if (a == null) {
@@ -57,6 +57,8 @@ public class SolutionController {
 
         //verifie que l'email dans l'url est le meme que celui qui a creer le probleme
         else if (blm.getUser() != a) return "Vous n'êtes pas autoriser a apporter une solution a ce problème !";
+
+        else if(blm.getEtat().getLibelle().equals(ett)) return "etat fermer";// si etat est fermer pas de solution
         else {
 
             //attribue le probleme à la solution
