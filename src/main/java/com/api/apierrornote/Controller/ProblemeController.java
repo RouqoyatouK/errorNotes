@@ -4,6 +4,7 @@ import com.api.apierrornote.Modele.Etat;
 import com.api.apierrornote.Modele.Probleme;
 import com.api.apierrornote.Modele.Solution;
 import com.api.apierrornote.Modele.User;
+import com.api.apierrornote.Repository.ProblemeRepo;
 import com.api.apierrornote.Service.EtatService;
 import com.api.apierrornote.Service.ProblemeService;
 import com.api.apierrornote.Service.UserService;
@@ -27,16 +28,18 @@ public class ProblemeController {
 
     @Autowired
     EtatService etatservice;
+    @Autowired
+    ProblemeRepo problemerepo;
 
-    @PostMapping("/create/{email}/{password}/{libelle}")
-    public String create(@RequestBody Probleme probleme, @PathVariable String libelle, @PathVariable String email, @PathVariable String password){
+    @PostMapping("/create/{email}/{password}")
+    public String create(@RequestBody Probleme probleme, @PathVariable String email, @PathVariable String password){
 
         //instanciation de User en user et user1 pour recuperer l'email et le mot de pass
         User user = userservice.TrouverParEmail(email);
         //User user1 = userservice.TrouverParPassword(password);
         //User user=userservice.TrouverParEmailEtMdp(email,password);
 
-        Etat etat = etatservice.TrouverParLibelle(libelle);
+       // Etat etat = etatservice.TrouverParLibelle(libelle);
 
         System.out.println(user.getPassword());
         System.out.println(password);
@@ -50,7 +53,7 @@ public class ProblemeController {
 
                 // A la table probleme on affecte la valeur recuperer dans user1 et user
                 probleme.setUser(user);
-                probleme.setEtat(etat);
+                //probleme.setEtat(etat);
 
 
                 this.problemeservice.creer(probleme);
@@ -70,6 +73,28 @@ public class ProblemeController {
          @GetMapping("/liste")
          public Iterable<Object[]> listeProbleme(){
             return problemeservice.listeProbleme();
+         }
+
+
+         //modifier problème
+         @PutMapping("/modifier/{email}/{password}/{idProbleme}")
+    public String update(@RequestBody Probleme probleme, @PathVariable String email, @PathVariable String password, @PathVariable Long idProbleme){
+        //Recuperer le user a travers son mail
+        User modif = userservice.TrouverParEmail(email);
+        /*Recuperer le probleme a traver idprobleme son but est de connaitre l'id de lutilisateur qui
+             correspond a ce probleme afin de le comparer a a l'id de  user recuperer dans modif */
+        Probleme promebl = problemerepo.findByIdProbleme(idProbleme);
+
+        //s'il ne trouve pas le mail dans la base
+        if (modif == null) return "vous n'êtes pas loger";
+        //s'il trouve le mail mais que celui si n'est pas celui de l'utilisateur qui a creer le problème
+        else if (promebl.getUser()!=modif){return "Seul celui qui a creer le probleme peut le modifier";}
+        else{
+            problemeservice.Modifier(idProbleme, probleme);
+            //System.out.println("id du probleme "+idProbleme + "jhhjhj "+ probleme.getDescription());
+            return "probleme modifier";
+        }
+
          }
 
 

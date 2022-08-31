@@ -26,14 +26,6 @@ public class Commentaire {
     private User user;
 
 
-    public Solution getSolution() {
-        return solution;
-    }
-
-    public void setSolution(Solution solution) {
-        this.solution = solution;
-    }
-
     @ManyToOne
     private Solution solution;
 

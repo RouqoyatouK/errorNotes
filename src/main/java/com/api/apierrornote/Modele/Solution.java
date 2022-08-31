@@ -18,7 +18,7 @@ import java.util.List;
 public class Solution {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSolution;
     private String descriptionSolution;
     private String tempsConsacre;
@@ -30,9 +30,9 @@ public class Solution {
     @JoinColumn (name = "probleme")
     private Probleme probleme;
 
-
+/*//on l'ajoute dans la table dont la clé primaire doit migrée pour s'aisir la valeur dans le body
     @JsonIgnore
     @OneToMany(mappedBy = "solution")
-    private List<Commentaire> commentaire;
+    private List<Commentaire> commentaire;*/
 
 }

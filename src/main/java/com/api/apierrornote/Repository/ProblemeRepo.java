@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface ProblemeRepo extends JpaRepository<Probleme, Long> {
 
+    //retourne le probleme correspondant à idProbleme
+    Probleme findByIdProbleme(Long idProbleme);
+
     @Query(value = "insert into solution(probleme) values(?)", nativeQuery = true)
             public Long InsertId(Long probleme);
 

@@ -13,6 +13,8 @@ public class UserController {
     @Autowired
     UserService userservice;
 
+    String vari = "User";
+    String varie = "Admin";
 
 
     //methode qui prend l'url pour creer un user
@@ -28,7 +30,7 @@ public class UserController {
         User userAdm = userservice.TrouverParEmail(email); //recuperer l'email dans l'url
 
 
-        String vari = "User";
+
         if (userAdm == null){ return "Email incorrect!";}
         else if (!userAdm.getPassword().equals(password)) {return "Mot de passe incorrect!";}
 
@@ -42,13 +44,21 @@ public class UserController {
            return  userservice.creer(userAdmin);
 
         }
+    }
+
+    @DeleteMapping("/supprimer/{email}/{role}/{idUser}")
+    public String Delete(@PathVariable Long idUser, @PathVariable String email, @PathVariable String role ){
+         User sup = userservice.TrouverParEmail(email);
+        if (sup.getRole().equals(vari)){
+            return "seule l'admin a ce droit";
+        }
+
+        else {
+            this.userservice.supprimer(idUser);
+        }
 
 
-
-
-
-
-
+        return "Utilisateur supprimer";
     }
 
 

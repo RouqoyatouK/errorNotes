@@ -19,7 +19,11 @@ public class UserServiceImpl implements UserService {
         return userrepo.save(user);
     }
 
-
+    @Override
+    public String supprimer(Long idUser) {
+        this.userrepo.deleteById(idUser);
+        return "Utilisateur supprimer";
+    }
 
 
     // methode d'implementation de UserService pour trouver l'utilisateur par l'email
