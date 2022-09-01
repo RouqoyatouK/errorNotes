@@ -7,6 +7,7 @@ import com.api.apierrornote.Modele.User;
 import com.api.apierrornote.Repository.ProblemeRepo;
 import com.api.apierrornote.Service.EtatService;
 import com.api.apierrornote.Service.ProblemeService;
+import com.api.apierrornote.Service.ProblemeServiceImpl;
 import com.api.apierrornote.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class ProblemeController {
     EtatService etatservice;
     @Autowired
     ProblemeRepo problemerepo;
+
+    @Autowired
+    ProblemeServiceImpl problemeServiceimpl ;
 
     @PostMapping("/create/{email}/{password}")
     public String create(@RequestBody Probleme probleme, @PathVariable String email, @PathVariable String password){
@@ -63,12 +67,11 @@ public class ProblemeController {
 
         }
 
-            //la gestion de notre fonctionnalite de recherche
-        @GetMapping("/recherche/{motcle}")
-        public List<Probleme> rechercherMotCle(@PathVariable(value = "motcle") String motcle) {
-            return problemeservice.RechercherDescription(motcle);
+        //la gestion de notre fonctionnalite de recherche
+        @GetMapping("/rechercher/{motcle}")
+        public Object rechercherMotCle(@PathVariable("motcle") String motcle) {
+        return problemeServiceimpl.rechercherParMotCle(motcle);
         }
-
         //Affichage des problemes
          @GetMapping("/liste")
          public Iterable<Object[]> listeProbleme(){
