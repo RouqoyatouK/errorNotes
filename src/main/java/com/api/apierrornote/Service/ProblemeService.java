@@ -2,9 +2,6 @@ package com.api.apierrornote.Service;
 
 import com.api.apierrornote.Modele.Probleme;
 
-import java.util.List;
-import java.util.Optional;
-
 public interface ProblemeService {
 
     //creer un bloblème
@@ -16,8 +13,10 @@ public interface ProblemeService {
 
     Probleme TrouverParTitre(String titre);
 
+    public Object rechercherParMotCle(String motcle);
+
     //methode de recherche de probleme par mot cle
-    List<Probleme> RechercherDescription(String motcle);
+    //String RechercherDescription(String motcle);
 
     //methode pour modifier un probleme
 

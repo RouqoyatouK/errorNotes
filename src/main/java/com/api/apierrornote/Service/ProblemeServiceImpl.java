@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProblemeServiceImpl implements ProblemeService {
@@ -46,8 +45,11 @@ public class ProblemeServiceImpl implements ProblemeService {
 
     //implementation de la methode permettant de faire la recherche par mot cle
     @Override
-    public List<Probleme> RechercherDescription(String motcle) {
-        return problemerepo.RechercherDescription(motcle);
+    public Object rechercherParMotCle(String motcle) {
+        List<Probleme> resultat;
+        resultat = problemerepo.RechercherDescription(motcle);
+        if (resultat.size() == 0) return "Aucun resultat trouvé pour votre recherche";
+        else return resultat;
     }
 
 
