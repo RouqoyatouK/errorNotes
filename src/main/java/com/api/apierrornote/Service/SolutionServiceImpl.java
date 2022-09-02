@@ -28,5 +28,10 @@ public class SolutionServiceImpl implements SolutionService {
         return solutionrepo.listeSolution();
     }
 
+   /* @Override
+    public String UniqueSolution() {
+        return solutionrepo.AfficherUneSolution();
+    }*/
+
 
 }

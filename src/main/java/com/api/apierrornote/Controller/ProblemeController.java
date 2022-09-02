@@ -81,7 +81,7 @@ public class ProblemeController {
 
          //modifier problème
          @PutMapping("/modifier/{email}/{password}/{idProbleme}")
-    public String update(@RequestBody Probleme probleme, @PathVariable String email, @PathVariable String password, @PathVariable Long idProbleme){
+         public String update(@RequestBody Probleme probleme, @PathVariable String email, @PathVariable String password, @PathVariable Long idProbleme){
         //Recuperer le user a travers son mail
         User modif = userservice.TrouverParEmail(email);
         /*Recuperer le probleme a traver idprobleme son but est de connaitre l'id de lutilisateur qui

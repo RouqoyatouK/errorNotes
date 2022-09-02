@@ -13,8 +13,19 @@ import java.util.List;
 public interface SolutionRepo extends JpaRepository<Solution, Long> {
 
 
-    //Requete permettant d'afficher la liste de probleme
-    @Query(value = "select probleme.titre, solution.description_solution, solution.ressources, solution.recherche, solution.temps_consacre, user.nom, user.prenom, user.email from probleme, solution, user where solution.probleme = probleme.id_probleme and probleme.user = user.id_user", nativeQuery = true)
+    //Requete permettant d'afficher la liste de solution
+    @Query(value = "select probleme.titre, solution.description_solution, solution.ressources, solution.recherche," +
+            " solution.temps_consacre, user.nom, user.prenom, user.email from probleme, solution, user " +
+            "where solution.probleme = probleme.id_probleme and probleme.user = user.id_user", nativeQuery = true)
     Iterable<Object[]> listeSolution();
+
+
+
+   /* @Query(value = "select")
+    Iterable<Object[]> listeSolution();
+    Rquête permettant d'afficher la solution d'un problème donné
+    @Query(value = "Select probleme.titre, solution.description_solution, solution.ressorces from solution, probleme where probleme.id_probleme = solution.probleme, nativeQuery = true)
+    List<Solution> AfficherUneSolution();*/
+
 
 }

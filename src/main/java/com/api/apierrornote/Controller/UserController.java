@@ -30,7 +30,6 @@ public class UserController {
         User userAdm = userservice.TrouverParEmail(email); //recuperer l'email dans l'url
 
 
-
         if (userAdm == null){ return "Email incorrect!";}
         else if (!userAdm.getPassword().equals(password)) {return "Mot de passe incorrect!";}
 

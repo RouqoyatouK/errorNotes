@@ -39,24 +39,29 @@ public class SolutionController {
        // Probleme b = problemeservice.TrouverParTitre(titre);
           // recupere le probleme a travers son id pour connaitre l'id de lutilisateur
         Probleme blm = problemeRepo.findByIdProbleme(idProbleme);
+        //Etat et = etatRepo.findByIdEtat(idProbleme);
+
+        String ett = "Fermer";
 
 
 
-    /* Strin ett = "Fermer";
-     et.geEtat == ett return "Letat est fermer";*/
-
-
-        if (a == null) {
-            return "le mail n'existe pas";
-        } else if (!a.getPassword().equals(password)) {
-            return "Password incorrect";
-        } else if (problemeRepo.findByIdProbleme(idProbleme) == null) {//verifie que le probleme existe
-
+<<<<<<< HEAD
             return "le probleme designe n'existe pas!";
         }
+=======
+        if (a == null || !a.getPassword().equals(password)) {
+            return "Erreur avec l'mail ou le mot de passe";}
+      /*  else if (!a.getPassword().equals(password)) {
+            return "Password incorrect";}*/
+        else if (problemeRepo.findByIdProbleme(idProbleme) == null) {//verifie que le probleme existe
+            return "le probleme ddesigne n'existe pas!";
+        } else if (idProbleme != null){ return "une solution a déjà été apporter a ce problème";}
+>>>>>>> 773ae740003eaf83c63e917c5b896c60c7a50564
 
         //verifie que l'email dans l'url est le meme que celui qui a creer le probleme
         else if (blm.getUser() != a) return "Vous n'êtes pas autoriser a apporter une solution a ce problème !";
+
+        else if(blm.getEtat().getLibelle().equals(ett)) return "etat fermer";// si etat est fermer pas de solution
         else {
 
             //attribue le probleme à la solution
@@ -65,12 +70,17 @@ public class SolutionController {
             this.solutionservice.creer(solution);
             return "Solution envoyée";
 
+
         }
     }
     @GetMapping("/liste")
     public Iterable<Object[]> listeSolution() {
         return solutionservice.listeSolution();
     }
+
+
+
+
 
 }
 
