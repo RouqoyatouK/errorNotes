@@ -24,11 +24,10 @@ public interface ProblemeRepo extends JpaRepository<Probleme, Long> {
     Probleme findByTitre(String titre);
 
     //Requete permettant de faire la recherche par mot cle
-<<<<<<< HEAD
-    @Query(value = "select * from probleme where description like %?%", nativeQuery = true)
-=======
+
+    //@Query(value = "select * from probleme where description like %?%", nativeQuery = true)
+
     @Query(value = "select * from probleme, user where probleme.description like %?%", nativeQuery = true)
->>>>>>> 773ae740003eaf83c63e917c5b896c60c7a50564
     List<Probleme> RechercherDescription(String motcle);
 
     //Requete permettant d'afficher la liste de probleme

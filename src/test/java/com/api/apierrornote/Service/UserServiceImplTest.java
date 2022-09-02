@@ -21,13 +21,13 @@ class UserServiceImplTest {
 
     @Test
     void creer() {
-        User us = new User();
-        us.setNom("Yng");
+        User us = new User(7L,"Tiec","Tiec","tiec@gmail.fr","123B",new Date(),"user");
+        /*us.setNom("Yng");
         us.setPrenom("Bk");
         us.setEmail("bki@gmail.com");
         us.setPassword("123A");
         us.setDate(new Date());
-        us.setRole("user");
+        us.setRole("user");*/
         userService.creer(us);
 
         //User usSave = ur.save(us);

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.apache.coyote.http11.Constants.a;
+
 @RestController
 @RequestMapping("/solution")
 public class SolutionController {
@@ -45,18 +47,18 @@ public class SolutionController {
 
 
 
-<<<<<<< HEAD
+
             return "le probleme designe n'existe pas!";
         }
-=======
-        if (a == null || !a.getPassword().equals(password)) {
+
+        if (a == null || !a.getP.equals(password)) {
             return "Erreur avec l'mail ou le mot de passe";}
       /*  else if (!a.getPassword().equals(password)) {
             return "Password incorrect";}*/
         else if (problemeRepo.findByIdProbleme(idProbleme) == null) {//verifie que le probleme existe
             return "le probleme ddesigne n'existe pas!";
         } else if (idProbleme != null){ return "une solution a déjà été apporter a ce problème";}
->>>>>>> 773ae740003eaf83c63e917c5b896c60c7a50564
+
 
         //verifie que l'email dans l'url est le meme que celui qui a creer le probleme
         else if (blm.getUser() != a) return "Vous n'êtes pas autoriser a apporter une solution a ce problème !";

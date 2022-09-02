@@ -20,7 +20,8 @@ public class UserController {
     //methode qui prend l'url pour creer un user
     @PostMapping("/create")
     public User create (@RequestBody User user){ //prend un user en format Json et @RequestBody veut dire que la valeur doit être au niveau du corps
-         return userservice.creer(user);
+
+        return userservice.creer(user);
     }
 
 
