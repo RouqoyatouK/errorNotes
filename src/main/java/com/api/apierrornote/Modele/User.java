@@ -18,8 +18,9 @@ public class User {
     //Definition de tout nos attribut
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
+
     @Column(length = 50, nullable = false)
     private String nom;
     @Column(length = 50, nullable = false)

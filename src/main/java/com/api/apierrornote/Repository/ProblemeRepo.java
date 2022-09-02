@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface ProblemeRepo extends JpaRepository<Probleme, Long> {
 
+    //retourne le probleme correspondant à idProbleme
+    Probleme findByIdProbleme(Long idProbleme);
+
     @Query(value = "insert into solution(probleme) values(?)", nativeQuery = true)
             public Long InsertId(Long probleme);
 
@@ -21,7 +24,7 @@ public interface ProblemeRepo extends JpaRepository<Probleme, Long> {
     Probleme findByTitre(String titre);
 
     //Requete permettant de faire la recherche par mot cle
-    @Query(value = "select * from probleme where probleme.description like %?%", nativeQuery = true)
+    @Query(value = "select * from probleme, user where probleme.description like %?%", nativeQuery = true)
     List<Probleme> RechercherDescription(String motcle);
 
     //Requete permettant d'afficher la liste de probleme

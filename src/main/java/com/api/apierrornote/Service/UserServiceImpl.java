@@ -16,11 +16,14 @@ public class UserServiceImpl implements UserService {
     //implementation de la methode qui permet de d'enregistrer un utilisateur
     @Override
     public User creer(User user) {
-
         return userrepo.save(user);
     }
 
-
+    @Override
+    public String supprimer(Long idUser) {
+        this.userrepo.deleteById(idUser);
+        return "Utilisateur supprimer";
+    }
 
 
     // methode d'implementation de UserService pour trouver l'utilisateur par l'email

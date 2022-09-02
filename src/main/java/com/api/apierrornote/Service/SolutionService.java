@@ -12,5 +12,8 @@ public interface SolutionService {
     //methode pour afficher la liste des solutions
     Iterable<Object[]> listeSolution();
 
+    //methode pour afficher une solution par rapport a un probleme
+    //String UniqueSolution();
+
 
 }

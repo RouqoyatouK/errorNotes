@@ -1,14 +1,17 @@
 package com.api.apierrornote.Service;
 
 import com.api.apierrornote.Modele.Probleme;
-import com.api.apierrornote.Modele.Solution;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProblemeService {
 
     //creer un bloblème
     Probleme creer(Probleme probleme);
+
+    //Modifier problème
+    Probleme Modifier(Long id, Probleme blem );
 
 
     Probleme TrouverParTitre(String titre);

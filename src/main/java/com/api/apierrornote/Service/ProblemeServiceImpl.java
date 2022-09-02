@@ -1,12 +1,12 @@
 package com.api.apierrornote.Service;
 
 import com.api.apierrornote.Modele.Probleme;
-import com.api.apierrornote.Modele.Solution;
 import com.api.apierrornote.Repository.ProblemeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProblemeServiceImpl implements ProblemeService {
@@ -19,6 +19,25 @@ public class ProblemeServiceImpl implements ProblemeService {
     public Probleme creer(Probleme probleme) {
         return problemerepo.save(probleme);
     }
+
+    @Override
+    public Probleme Modifier(Long id, Probleme blem) {
+        return problemerepo.findById(id).map(p->{
+            if (blem.getTitre()!=null)
+                p.setTitre(blem.getTitre());
+            if (blem.getDescription()!=null)
+                p.setDescription(blem.getDescription());
+            if (blem.getTechnologie()!=null)
+                p.setTechnologie(blem.getTechnologie());
+            if (blem.getEtat()!=null)
+                p.setEtat(blem.getEtat());
+
+            return problemerepo.save(p);
+        }).orElseThrow(()-> new RuntimeException("Le Problème n'a pas été trouver"));
+    }
+
+    //Modifier le problème
+
 
     @Override
     public Probleme TrouverParTitre(String titre) {

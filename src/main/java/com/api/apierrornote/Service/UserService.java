@@ -9,6 +9,9 @@ public interface UserService {
     //methode qui permet de creer un l'utilisateur
     User creer(User user);
 
+    //supprimer un utilisateur
+    String supprimer(Long idUser);
+
 
 
 
