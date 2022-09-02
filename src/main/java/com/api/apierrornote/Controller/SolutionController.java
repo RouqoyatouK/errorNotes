@@ -38,43 +38,29 @@ public class SolutionController {
     public String creation(@RequestBody Solution solution, @PathVariable(value = "email") String email, @PathVariable("password") String password, @PathVariable Long idProbleme) {
 
         User a = userservice.TrouverParEmail(email);
-       // Probleme b = problemeservice.TrouverParTitre(titre);
-          // recupere le probleme a travers son id pour connaitre l'id de lutilisateur
+        // Probleme b = problemeservice.TrouverParTitre(titre);
+        // recupere le probleme a travers son id pour connaitre l'id de lutilisateur
+        // Probleme blm = problemeRepo.findByIdProbleme(idProbleme);
         Probleme blm = problemeRepo.findByIdProbleme(idProbleme);
+
         //Etat et = etatRepo.findByIdEtat(idProbleme);
 
         String ett = "Fermer";
 
+        if (a == null || a.getPassword().equals(password)) return "Erreur avec le mail ou le password";
 
-
-
-            return "le probleme designe n'existe pas!";
-        }
-
-        if (a == null || !a.getP.equals(password)) {
-            return "Erreur avec l'mail ou le mot de passe";}
-      /*  else if (!a.getPassword().equals(password)) {
-            return "Password incorrect";}*/
-        else if (problemeRepo.findByIdProbleme(idProbleme) == null) {//verifie que le probleme existe
-            return "le probleme ddesigne n'existe pas!";
-        } else if (idProbleme != null){ return "une solution a déjà été apporter a ce problème";}
-
-
-        //verifie que l'email dans l'url est le meme que celui qui a creer le probleme
-        else if (blm.getUser() != a) return "Vous n'êtes pas autoriser a apporter une solution a ce problème !";
-
-        else if(blm.getEtat().getLibelle().equals(ett)) return "etat fermer";// si etat est fermer pas de solution
+        else if (problemeRepo.findByIdProbleme(idProbleme) == null) return "Le probleme designer n'existe pas";
+        else if (idProbleme != null) return "la solution existe deja";
+        else if (blm.getEtat().getLibelle().equals(ett)) return "etat fermer";
         else {
-
-            //attribue le probleme à la solution
             solution.setProbleme(problemeRepo.findByIdProbleme(idProbleme));
-            //enregistrement du probleme
-            this.solutionservice.creer(solution);
-            return "Solution envoyée";
-
-
+            this.solutionservice.creer((solution));
+            return "Solution envoyés";
         }
     }
+
+
+
     @GetMapping("/liste")
     public Iterable<Object[]> listeSolution() {
         return solutionservice.listeSolution();
